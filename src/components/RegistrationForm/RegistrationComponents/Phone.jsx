@@ -1,6 +1,5 @@
 import { Form, Input, Select } from "antd";
 import React from "react";
-import { phoneValidation } from "../../../helpers/functions";
 
 const { Option } = Select;
 
@@ -24,6 +23,12 @@ const prefixSelector = (
 );
 
 export const Phone = () => {
+  const checkPrice = (_, value) => {
+    if (/^[0-9]*$/.test(value)) {
+      return Promise.resolve();
+    }
+    return Promise.reject(new Error("Please input only numbers!"));
+  };
   return (
     <Form.Item
       name="phone"
@@ -31,8 +36,7 @@ export const Phone = () => {
       rules={[
         {
           required: true,
-          validator: phoneValidation,
-          message: "Please input your phone number!",
+          validator: checkPrice,
         },
         { min: 8 },
         { max: 8 },

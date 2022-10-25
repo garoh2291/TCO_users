@@ -48,5 +48,3 @@ export function registerNewUser(formData, cb) {
     }
   }
 }
-
-export const phoneValidation = /^[0-9\b]+$/;
