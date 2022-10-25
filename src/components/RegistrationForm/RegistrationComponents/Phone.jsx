@@ -1,5 +1,6 @@
 import { Form, Input, Select } from "antd";
 import React from "react";
+import { phoneValidation } from "../../../helpers/functions";
 
 const { Option } = Select;
 
@@ -30,6 +31,7 @@ export const Phone = () => {
       rules={[
         {
           required: true,
+          validator: phoneValidation,
           message: "Please input your phone number!",
         },
         { min: 8 },
